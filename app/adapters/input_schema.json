@@ -1,0 +1,50 @@
+{
+    "$id": "https://example.com/invoice.json",
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "title": "Invoice update",
+    "description": "Payload for invoice",
+    "type": "object",
+    "examples": [
+        {
+            "invoice_id": 1,
+            "customer_id": 2,
+            "invoice_quantity": 10,
+            "invoice_unit_price": 1.542348,
+            "invoice_comment": "test"
+        }
+    ],
+    "required": [
+        "invoice_id",
+        "customer_id",
+        "invoice_quantity",
+        "invoice_unit_price"
+    ],
+    "properties": {
+        "invoice_id": {
+            "type": "integer",
+            "title": "Invoice number",
+            "minimum": 1
+        },
+        "customer_id": {
+            "type": "integer",
+            "title": "Customer id",
+            "minimum": 1
+        },
+        "invoice_quantity": {
+            "type": "integer",
+            "title": "Invoice quantity",
+            "minimum": 1
+        },
+        "invoice_unit_price": {
+            "type": "number",
+            "title": "Unit price",
+            "minimum": 0.01
+        },
+        "invoice_comment": {
+            "type": "string",
+            "title": "Comments",
+            "minLength": 1,
+            "maxLength": 100
+        }
+    }
+}

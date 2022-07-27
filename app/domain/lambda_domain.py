@@ -3,7 +3,7 @@ from . import invoicedata
 from ports.invoice_repository import InvoiceRepository
 
 
-def process(logger: Logger, invoice: invoicedata.InvoiceData):
+def process(logger: Logger, invoice: invoicedata.InvoiceData) -> dict:
     total_price = round(
         invoice.invoice_unit_price * invoice.invoice_quantity,
         2

@@ -17,20 +17,15 @@ def update_invoice(event, context):
     try:
         logger.set_correlation_id(
             event["requestContext"]["requestId"])
-        
         logger.info({
             "Event": event})
-        
-        
         input_schema = get_schema("adapters/input_schema.json")
-        
         validate(
             event = event,
             schema=input_schema,
             envelope=envelopes.API_GATEWAY_REST)
         
-    except Exception as error:
-        
+    except Exception as error:       
         logger.exception("Erro de validacao dos dados")
         return response.response_bad_request(error)
         

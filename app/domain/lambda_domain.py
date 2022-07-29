@@ -8,7 +8,6 @@ def process(logger: Logger, invoice: invoicedata.InvoiceData) -> dict:
         invoice.invoice_unit_price * invoice.invoice_quantity,
         2
     )
-    
     invoice_repository = InvoiceRepository(logger)
     
     invoice_repository.update_invoice(

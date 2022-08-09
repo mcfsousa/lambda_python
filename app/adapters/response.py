@@ -6,8 +6,8 @@ def response_ok(payload: str) -> dict:
     return response_from(HTTPStatus.OK, payload)
 
 
-def response_bad_request(erro: Exception) -> dict:
-    return response_from(HTTPStatus.BAD_REQUEST, str(erro))
+def response_bad_request(payload: str) -> dict:
+    return response_from(HTTPStatus.BAD_REQUEST, payload)
 
 
 def response_internal_server_error(payload: str) -> dict:

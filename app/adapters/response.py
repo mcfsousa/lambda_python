@@ -15,11 +15,9 @@ def response_internal_server_error(payload: str) -> dict:
 
 
 def response_from(http_status: tuple, payload: str) -> dict:
-    message = {
-        'message': payload
-    }
+    message = {"message": payload}
     response = {
-        'statusCode': http_status.value,
-        'body': json.dumps(message, default=str)
+        "statusCode": http_status.value,
+        "body": json.dumps(message, default=str),
     }
     return response

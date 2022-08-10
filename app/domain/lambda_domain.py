@@ -1,5 +1,5 @@
 import aws_lambda_powertools as PowerToolsLog
-from . import invoicedata as DomainTypes
+import domain.invoicedata as DomainTypes
 import ports.invoice_repository as Repository
 
 

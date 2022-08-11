@@ -9,7 +9,9 @@ class InvoiceRepository:
         global dynamo_resource
         self.logger = _logger
         if dynamo_resource is None:
-            dynamo_resource = boto3.resource("dynamodb", region_name="sa-east-1")
+            dynamo_resource = boto3.resource(
+                "dynamodb", region_name="sa-east-1"
+            )
         self.dynamo_table = dynamo_resource.Table("invoice")
 
     def update_invoice(

@@ -54,7 +54,12 @@ class InvoiceTest(unittest.TestCase):
                     "cognitoAuthenticationType": "null",
                     "userArn": "arn:aws:iam::074512587423:user/Milton",
                     "apiKeyId": "test-invoke-api-key-id",
-                    "userAgent": "aws-internal/3 aws-sdk-java/1.12.239 Linux/5.4.196-119.356.amzn2int.x86_64 OpenJDK_64-Bit_Server_VM/25.332-b08 java/1.8.0_332 vendor/Oracle_Corporation cfg/retry-mode/standard",
+                    "userAgent": (
+                        "aws-internal/3 aws-sdk-java/1.12.239"
+                        " Linux/5.4.196-119.356.amzn2int.x86_64"
+                        " OpenJDK_64-Bit_Server_VM/25.332-b08 java/1.8.0_332"
+                        " vendor/Oracle_Corporation cfg/retry-mode/standard"
+                    ),
                     "accountId": "074512587423",
                     "caller": "AIDARCWKL3KP7SL5QLBTO",
                     "sourceIp": "test-invoke-source-ip",
@@ -85,7 +90,9 @@ class InvoiceTest(unittest.TestCase):
         response_success = {
             "statusCode": 200,
             "headers": {"Content-Type": "application/json"},
-            "body": '{"message":"Invoice successfully updated","invoice_id":1}',
+            "body": (
+                '{"message":"Invoice successfully updated","invoice_id":1}'
+            ),
             "isBase64Encoded": False,
         }
         assert response == response_success
@@ -104,7 +111,11 @@ class InvoiceTest(unittest.TestCase):
         response = lambda_function.lambda_handler(event=payload, context=None)
         bad_request = {
             "statusCode": 400,
-            "body": "{\"message\": \"Failed schema validation. Error: data.invoice_id must be integer, Path: ['data', 'invoice_id'], Data: 1X\"}",
+            "body": (
+                '{"message": "Failed schema validation. Error:'
+                " data.invoice_id must be integer, Path: ['data',"
+                " 'invoice_id'], Data: 1X\"}"
+            ),
         }
         assert response == bad_request
 

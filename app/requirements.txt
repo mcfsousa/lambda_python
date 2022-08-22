@@ -1,0 +1,6 @@
+aws-lambda-powertools==1.26.6
+black==22.6.0
+boto3==1.24.38
+cachetools==5.2.0
+moto==3.1.16
+typing_extensions==4.3.0

@@ -1,4 +1,5 @@
 import json
+import cachetools.func
 
 import aws_lambda_powertools as PowerToolsLog
 import aws_lambda_powertools.event_handler as PowerToolsEvent
@@ -6,7 +7,7 @@ import aws_lambda_powertools.utilities.validation as PowerToolsValidation
 import aws_lambda_powertools.utilities.validation.envelopes as Envelopes
 import aws_lambda_powertools.utilities.parser as PowerToolsParse
 
-import adapters.response as response
+import adapters.response as Response
 import domain.invoicedata as DomainTypes
 import domain.lambda_domain as DomainRules
 
@@ -27,7 +28,7 @@ def update_invoice(event, context):
 
     except Exception as error:
         logger.exception("Erro de validacao dos dados")
-        return response.bad_request(error)
+        return Response.bad_request(error)
 
     try:
         return_value = apigateway.resolve(event, context)
@@ -35,7 +36,7 @@ def update_invoice(event, context):
         return return_value
     except Exception:
         logger.exception("Erro interno")
-        return response.internal_server_error("Error updating invoice")
+        return Response.internal_server_error("Error updating invoice")
 
 
 @apigateway.post("/invoice")
@@ -46,6 +47,7 @@ def process_request():
     return DomainRules.process(logger, invoice)
 
 
+@cachetools.func.ttl_cache(maxsize=10240, ttl=3600)
 def get_schema(schema_name: str) -> dict:
     with open(schema_name, "r") as file:
         return json.load(file)

@@ -16,4 +16,4 @@ The API Gateway payload must contain, in the body property, a json with some spe
 
 The DynamoDb table expected to exist in order for the sample works can also be found in the [testfile](./app/tests//test_lambda_function.py).
 
-We are using code style [Black](https://medium.com/ki-labs-engineering/any-code-style-you-like-as-long-its-black-7a3cc4edd90).
+It uses code style [Black](https://medium.com/ki-labs-engineering/any-code-style-you-like-as-long-its-black-7a3cc4edd90).

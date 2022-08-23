@@ -10,9 +10,9 @@ It ilustrates some practices that should be considered when developing an AWS La
 1. Choosing an architectural pattern
 2. Defining how to implement desirable features like log, trace, validation, exception handling, etc
 
-A sample of the payload received by the AWS Lambda can be found in the [testfile](./app/tests//test_lambda_function.py).
+A sample of the payload received by the AWS Lambda can be found in the [testfile](./app/tests//test_lambda_function.py). It's an API Gateway payload.
 
-The payload must contain a json with some specific fields as described in the [jsonschema](./app/adapters/input_schema.json)
+The API Gateway payload must contain in the body property a json with some specific fields as described in the [jsonschema](./app/adapters/input_schema.json)
 
 The DynamoDb expected to exist in order for the sample works can also be found in the [testfile](./app/tests//test_lambda_function.py).
 

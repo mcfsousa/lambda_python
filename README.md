@@ -12,8 +12,8 @@ It ilustrates some practices that should be considered when developing an AWS La
 
 A sample of the payload received by the AWS Lambda can be found in the [testfile](./app/tests//test_lambda_function.py). It's an API Gateway payload.
 
-The API Gateway payload must contain in the body property a json with some specific fields as described in the [jsonschema](./app/adapters/input_schema.json)
+The API Gateway payload must contain, in the body property, a json with some specific fields as described in the [jsonschema](./app/adapters/input_schema.json)
 
-The DynamoDb expected to exist in order for the sample works can also be found in the [testfile](./app/tests//test_lambda_function.py).
+The DynamoDb table expected to exist in order for the sample works can also be found in the [testfile](./app/tests//test_lambda_function.py).
 
-We are using code style [Black](https://medium.com/ki-labs-engineering/any-code-style-you-like-as-long-its-black-7a3cc4edd90)
+We are using code style [Black](https://medium.com/ki-labs-engineering/any-code-style-you-like-as-long-its-black-7a3cc4edd90).

@@ -1,18 +1,11 @@
-import boto3
 import aws_lambda_powertools as PowerToolsLog
 
-dynamo_resource = None
+import ports.dynamodb_repository as Repository
 
 
-class InvoiceRepository:
+class InvoiceRepository(Repository.DynamoDBRepository):
     def __init__(self, _logger: PowerToolsLog.Logger):
-        global dynamo_resource
-        self.logger = _logger
-        if dynamo_resource is None:
-            dynamo_resource = boto3.resource(
-                "dynamodb", region_name="sa-east-1"
-            )
-        self.dynamo_table = dynamo_resource.Table("invoice")
+        Repository.DynamoDBRepository.__init__(self, _logger, "invoice")
 
     def update_invoice(
         self,
@@ -33,7 +26,7 @@ class InvoiceRepository:
                 "invoice_total_price": str(invoice_total_price),
                 "invoice_comment": invoice_comment_aux,
             }
-            result = self.dynamo_table.put_item(Item=item)
+            result = self.table().put_item(Item=item)
             self.logger.info({"DynamoDb item updated": item, "result": result})
         except Exception as error:
             self.logger.exception({"DynamoDb item failed": item})
